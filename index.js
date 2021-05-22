@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
 
 
 app.get('/edit', function(req, res) {
-    console.log(req.query);
+    console.log(req.query);2
     const file_name = req.query.filename;
     if(file_name === undefined){
         res.sendStatus(404);
