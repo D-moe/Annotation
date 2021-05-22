@@ -41,6 +41,7 @@ app.get('/edit', function(req, res) {
 
 
 // The server is setup to run on port 3000.x
-let server = app.listen(4000, function() {
-  console.log('Server can be accessed at localhost:3000');
+const port_number = 3000;
+let server = app.listen(port_number, function() {
+  console.log('Server can be accessed at localhost:' + port_number);
 });

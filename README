@@ -1,0 +1,30 @@
+This project is a simple server that serves files and allows the user
+to annotate the selected files.
+TODO: convert base64 encoding to png and update modified file.
+
+Installation:
+On Linux to install npm:
+sudo apt install npm
+
+Then in a separate directory clone this git repository
+
+The following node packages were installed:
+├── body-parse@0.1.0
+├── ejs@3.1.6
+├── express@4.17.1
+├── markerjs2@2.7.1
+├── multer@1.4.2
+└── serve-index@1.9.1
+
+Version shouldn't be necessary when install this is just whatever Node.js
+installed by default.
+npm install <package-name> should be sufficient to isntall these respective packages. (Name does not include @version_number)
+
+Server Structure:
+the / directory maps to a simple file upload page
+the /uploads url gives a directory page showing uploaded files
+/uploads/<file_name> to open a specific file
+the /edit?file_name=<file_name> path will open a given file in editing mode (for annotation). If a file_name is not passed a 404 error will occur
+
+POST
+the /upload url is used to upload data to the server

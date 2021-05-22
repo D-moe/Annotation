@@ -28,10 +28,12 @@ with an additional submission button like for before-->
             markerArea.addRenderEventListener((imgURL) => target.src = imgURL);
             markerArea.show();
         }
+        //TODO(dmoe): Modify function to convert BASE 64 encoding to png and reupload
+        // annotated file to server.
         function upload() {
             let data = document.getElementsByName('mod-img')[0].src
             console.log('doupload', data)
-            fetch('upload/',  { method: 'PUT', body: data });
+            fetch('upload/', { method: 'PUT', body: data });
             alert('your file has been uploaded');
             location.reload();
         };
