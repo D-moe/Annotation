@@ -1,0 +1,46 @@
+<!--The code for modifying the image will go here,
+with an additional submission button like for before-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All defaults demo</title>
+    <script src="https://unpkg.com/markerjs2/markerjs2.js"></script>
+    <script>
+
+        // create an instance of MarkerArea and pass the target image reference as a parameter
+        let markerArea = new markerjs2.MarkerArea(document.getElementById('myimg'));
+        // This throws an error, in theory closer to what we want.
+        //markerArea.settings.displayMode = 'popup';
+        // register an event listener for when user clicks OK/save in the marker.js UI
+        markerArea.addRenderEventListener(dataUrl => {
+            // we are setting the markup result to replace our original image on the page
+            // but you can set a different image or upload it to your server
+            document.getElementById('myimg').src = dataUrl;
+        });
+
+        // finally, call the show() method and marker.js UI opens
+        markerArea.show();
+        function showMarkerArea(target) {
+            const markerArea = new markerjs2.MarkerArea(target);
+            markerArea.addRenderEventListener((imgURL) => target.src = imgURL);
+            markerArea.show();
+        }
+        function upload() {
+            let data = document.getElementsByName('mod-img')[0].src
+            console.log('doupload', data)
+            fetch('upload/',  { method: 'PUT', body: data });
+            alert('your file has been uploaded');
+            location.reload();
+        };
+    </script>
+</head>
+
+<body>
+
+    <img name="mod-img" src=<%=imgpath %> style="max-width: 600px;" onclick="showMarkerArea(this);" />
+</body>
+
+</html>
